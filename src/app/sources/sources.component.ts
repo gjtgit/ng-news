@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../services/news.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sources',

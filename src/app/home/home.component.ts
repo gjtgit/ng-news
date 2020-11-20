@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   pageSize = 8;
   page = 1;
 
+  endpoint = 'latest-news';  //top-headlines
+
   constructor(private newsService: NewsService, private snackBar: MatSnackBar ) { }
 
   ngOnInit() {
@@ -23,7 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   getData(){
     this.newsSubscription = this.newsService
-    .getData('top-headlines?country=us&pageSize=${this.pageSize}&page=${this.page}')
+    .getData(this.endpoint+'?country=us&pageSize=${this.pageSize}&page=${this.page}')
     .subscribe(data=>{
       this.news=data;
       this.length = data['totalResults'];
@@ -51,7 +53,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   onPageChange(event){
     console.log(event);
     this.newsSubscription = this.newsService
-    .getData('top-headlines?country=us&pageSize='+this.pageSize+'&page='+(event.pageIndex+1))
+    .getData(this.endpoint+'?country=us&pageSize='+this.pageSize+'&page='+(event.pageIndex+1))
     .subscribe(data=>{
       this.news=data;
       this.length = data['totalResults'];

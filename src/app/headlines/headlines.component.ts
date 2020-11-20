@@ -30,7 +30,7 @@ export class HeadlinesComponent implements OnInit {
 
   getCategoryData(category){
     //this.newsService.getData("everything?q=bitcon").subscribe(
-    this.newsService.getData("everything?q="+category.toLowerCase()).subscribe(
+    this.newsService.getData("search?category="+category.toLowerCase()).subscribe(
       data=>{
         this.news = data;
       }
